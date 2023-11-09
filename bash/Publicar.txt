@@ -1,0 +1,46 @@
+# En el servidor: desactivar el script de publicación
+  (p.e. poniéndole un exit al principio o cambiando el nombre a LogConex/Publicar.sh)
+
+CONFIGURAR EL GIT LOCAL para que guarde usuario+clave y no lo pida cada vez:
+nano ~/.gitconfig
+[user]
+  email = your@email.com
+  user = gitUSER
+[credential]
+  helper = store
+
+# En https://github.com/
+Cambiar el nombre al repo LogConex -> LogConexT
+Crear un nuevo repo vacío LogConex público
+Activar GitHub pages de este directorio en https://github.com/NOMBRE-USUARIO/NOMBRE-DEL-REPO/settings/pages
+  Seleccionar el branch main, y click [Save]
+
+# En el servidor: asociar el nuevo directorio de log al nuevo repo
+  cd /Discos/Local/www/LogConex/  | /Discos/Alfica/web-interna/LogConex/
+  git init
+  git config --global --add safe.directory /Discos/Local/www/LogConex/
+  git add .
+  git commit -m "Commit inicial"
+  git branch -M main 
+  git remote add origin git@github.com:NOMBRE-USUARIO/NOMBRE-DEL-REPO.git
+                        git@github.com:FedericoD3/LogConexVD.git
+                        git@github.com:FedericoD3/LogConexUZ.git
+                        git@github.com:ALFICA-Sistemas/LogConex.git
+
+# NO SE POR QUE AHORA NECESITA ESTO PARA AUTENTICAR:
+#  ERA PORQUE ESTABA MEZCLANDO .GIT CON LA SINCRONIZACION DE SYNCTHING!
+  cd ~/.ssh
+  ssh-keygen
+  cat ~/.ssh/id_rsa.pub
+# Copiar el contenido de ese archivo, sin incluir el <usuario>@<host> del final
+# Y pegarlo en una clave nueva creada en https://github.com/settings/keys
+
+  git push -u origin main
+
+# PARA CADA UPDATE / PUSH:
+  cd /Discos/Local/www/LogConex/  | /Discos/Alfica/web-interna/LogConex/
+  git add .
+  git commit -m "Update del $(TZ=":America/Caracas" date +'%Y-%m-%d_%H:%M')"
+  git push -u origin main
+
+# En el servidor: resactivar el script de publicación

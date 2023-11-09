@@ -1,0 +1,43 @@
+https://gist.github.com/nickferrando/c6e5a45c14e1a3f61c151f6f1f894719
+
+sudo apt update 
+sudo apt-get install build-essential
+sudo apt-get install -y libjpeg62-dev 
+# o sudo apt-get install -y libjpeg62-turbo-dev 
+sudo apt-get install -y libtiff-dev 
+sudo apt-get install -y libpng-dev
+wget https://imagemagick.org/archive/ImageMagick.tar.gz
+tar xvzf ImageMagick.tar.gz
+cd ImageMagick-7.1.1-15
+./configure
+sudo make	# Demora muchisimo
+sudo make install 
+sudo ldconfig /usr/local/lib
+
+
+
+https://askubuntu.com/questions/745660/imagemagick-png-delegate-install-problems/746195#746195
+
+sudo nano /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get build-dep imagemagick
+wget https://download.imagemagick.org/archive/ImageMagick.tar.gz
+tar xvf ImageMagick.tar.gz
+cd ImageMagick-7.0.8-28 
+./configure 
+sudo make 	# Demora muchisimo
+sudo make install
+	# sudo checkinstall -D --install=yes --fstrans=no --pakdir "$HOME/imagemagick_build" --pkgname imagemagick --backup=no --deldoc=yes --deldesc=yes --delspec=yes --default --pkgversion "7.0.8-28"
+sudo make distclean
+sudo ldconfig /usr/local/lib
+
+https://imagemagick.org/Usage/backgrounds/
+magick -version
+magick -size 800x600 plasma:fractal fractal.png
+
+  180  Sep15 20:35:45 wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip
+  182  Sep15 20:36:22 unzip VictorMonoAll.zip -d ~/VictorMonoAll
+  183  Sep15 20:36:37 ll  ~/VictorMonoAll
+  185  Sep15 20:38:05 sudo mv ~/VictorMonoAll/TTF /usr/share/fonts/truetype/VictorMonoAll
+  186  Sep15 20:38:16 fc-cache -f -v
+  188  Sep15 20:38:58 fc-list | grep "Victor"

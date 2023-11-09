@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+   <head>
+      <title>Registro de conexion</title>
+      <!-- https://www.w3schools.com/html/html_layout.asp -->
+      <link rel="shortcut icon" href="local_css/favicon.png" type="image/x-icon">
+      <link rel="stylesheet" type="text/css" href="css/comun.css">
+      <link rel="stylesheet" type="text/css" href="css/dropdown.css">
+      <link rel="stylesheet" type="text/css" href="local_css/local.css">
+      <script src="js/comun.js"></script>
+      <script src="js/dropdown.js"></script>             
+   </head>
+
+   <body onload="Init()">
+      <header> 
+         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
+         <label for="hostDest_id">Registro de conectividad a </label>
+         <input list="hostDest_lista" id="hostDest_id" name="hostDest_id" />
+         <datalist id="hostDest_lista"></datalist>
+      </header>                             <!-- Titulo del gráfico-->
+      <img id="LogGraf" alt="Log del mes">  <!-- Cuerpo del gráfico -->
+      <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
+      <div id="fec">-</div>
+   </body>
+
+   <script>
+      function Init(){
+//         Lista=LeerTexto("local_logs/logs.txt");
+         LlenarLista(document.getElementById('hostDest_lista'),"local_logs/logs.txt");
+         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
+         setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
+         }
+      function RecargaImg(){
+         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
+         }
+   </script>
+   
+</html>

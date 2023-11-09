@@ -1,0 +1,10 @@
+Directorio con scripts que se ejecutan en cualquier servidor que monitorea y notas varias.
+
+/Discos/Alfica/web-interna/LogConex # Alfica
+/Discos/Local/www/LogConex         	# Apartamento y ancianato
+├── bash                           	# Directorio con scripts comunes a todos los sitios de monitoreo
+├── css                            	# Directorio con   css   comunes a todos los sitios
+├── index.html                     	# Página web principa l   comun  a todos los sitios
+├── js                             	# Directorio con javascripts comunes a todos los sitios
+├── local_css                      	# Directorio con css específicos de cada sitio (no sincronizado, via .stignore)
+└── local_logs                     	# Directorio con logs gráficos de cada sitio (no sincronizado, via .stignore)
