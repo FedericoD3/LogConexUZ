@@ -31,12 +31,12 @@
          setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
          }
       function RecargaImg(){
+         console.log(LogGraf.getAttribute("data-LogGrafArch"));
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
          }
       function SelecLog(){
-
+         LogGraf.setAttribute("data-LogGrafArch")=hostDest_id.value;
          console.log(hostDest_id.value);
-
       }
    </script>
    
