@@ -15,12 +15,12 @@
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
          <label for="ListaLogs">Registro de conectividad a </label>
          <select id="ListaLogs"></select>
-<!--
+<!--     
          <input list="ListaLogs" id="hostDest_id" name="hostDest_id" onchange="SelecLog()" />
          <datalist id="ListaLogs"></datalist>
 -->         
       </header>                             <!-- Titulo del gráfico-->
-      <img id="LogGraf" alt="Log del mes" data-LogGrafArch="202311_Elec-SacosMalla">  <!-- Cuerpo del gráfico -->
+      <img id="LogGraf" alt="Log del mes" data-LogGrafArch="Imagen del log">  <!-- Cuerpo del gráfico -->
       <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
       <footer id="fec">-</footer>
    </body>
@@ -30,15 +30,15 @@
          LlenarLista(document.getElementById('ListaLogs'),"local_logs/logs.txt");
          let LogGrafArch=LogGraf.getAttribute("data-LogGrafArch");
          console.log(LogGrafArch);
-         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
+         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
          setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
          }
       function RecargaImg(){
-         console.log(LogGraf.getAttribute("data-LogGrafArch"));
-         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
+         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
          }
       function SelecLog(){
          LogGraf.setAttribute("data-LogGrafArch")=hostDest_id.value;
+         console.log(LogGraf.getAttribute("data-LogGrafArch"));
       }
    </script>
    
