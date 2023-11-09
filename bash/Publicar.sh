@@ -15,4 +15,4 @@ cd ..                 #  y subir un nivel a la raiz del repo
 git add .             # Registrar todos los archivos
 git commit -m "Update del $(TZ=":America/Caracas" date +'%Y-%m-%d_%H:%M')"
 echo "$Yo" >> $Deb
-git push -u origin main >> $Deb
+git push -u -f origin main >> $Deb  // Usar -force para asegurar que se envíe de este servidor a github
