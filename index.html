@@ -21,21 +21,28 @@
    </body>
 
    <script>
+
       function Init(){
          LlenarLista(document.getElementById('ListaLogs'),"local_logs/logs.txt");
-         ListaLogs.value=0;
-         let LogGrafArch=LogGraf.getAttribute("data-LogGrafArch");
-
-         CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
-         setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
+//         ListaLogs.value=0;
+//         SelecLog();
+//       CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
+//         let LogGrafArch="local_logs/"LogGraf.getAttribute("data-LogGrafArch")".png";
+//         console.log(LogGrafArch);
+//         CargaImg(document.getElementById('LogGraf'), LogGrafArch);
+//         setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
          }
+      
+      function SelecLog(){
+         LogGrafArch="local_logs/"+ListaLogs.options[ListaLogs.value].text+"png";
+         console.logLogGrafArch);
+         LogGraf.setAttribute("data-LogGrafArch",LogGrafArch);
+      }
+
       function RecargaImg(){
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
-         }
-      function SelecLog(){
-         Elegido=ListaLogs.options[ListaLogs.value].text;
-         LogGraf.setAttribute("data-LogGrafArch",Elegido);
       }
+
    </script>
    
 </html>
