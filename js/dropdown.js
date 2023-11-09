@@ -17,6 +17,7 @@ function LlenarLista(objLista, URL){
   Items.sort();
   Items.reverse();
   for (let i = 0; i < Items.length; i++) {
-     objLista.innerHTML += '<option value=' + Items[i] + "></option>";
+//     objLista.innerHTML += '<option value=' + Items[i] + "></option>";
+     objLista.appendChild(opt);
   } 
 }
