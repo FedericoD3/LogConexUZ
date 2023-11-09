@@ -18,9 +18,8 @@ function LlenarLista(objLista, URL){
   var Items = Lista.split('\n');    //  Separar a un array cada linea del archivo
   Items.sort;
 //  Items.reverse;
-  console.log(Items[0]);
-
   for (let i = 0; i < Items.length; i++) {
+    console.log(Items[i]);
     objLista.innerHTML += '<option value=' + Items[i] + "></option>";
   } 
 }
