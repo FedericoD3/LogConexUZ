@@ -17,7 +17,16 @@ function LlenarLista(objLista, URL){
   Items.sort();
   Items.reverse();
   for (let i = 0; i < Items.length; i++) {
-//     objLista.innerHTML += '<option value=' + Items[i] + "></option>";
+/* Usando select */
+  const Item = document.createElement("option");
+  Item.value = i;
+  Item.text = "Option: Value 3";
+
+objLista.add(opt, null);
+
+/*   Usando datalist    
+     objLista.innerHTML += '<option value=' + Items[i] + "></option>";
      objLista.appendChild(opt);
+*/
   } 
 }
