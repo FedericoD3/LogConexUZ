@@ -63,3 +63,4 @@ https://imagemagick.org/image/wand.ico
 # Si el log no existe, se crea con diez noreg: ----------
 # En los minutos múltiplos de 10 se invoca el dibujo del bloque de esa fecha esa hora con el contenido del archivo
 #  y se borra el log temporal para que sea recreado
+
