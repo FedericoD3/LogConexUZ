@@ -20,9 +20,8 @@ function LlenarLista(objLista, URL){
 /* Usando select */
   const Item = document.createElement("option");
   Item.value = i;
-  Item.text = "Option: Value 3";
-
-objLista.add(opt, null);
+  Item.text = Items[i] ;
+  objLista.add(Item, null);
 
 /*   Usando datalist    
      objLista.innerHTML += '<option value=' + Items[i] + "></option>";
