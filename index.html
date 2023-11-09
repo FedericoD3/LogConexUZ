@@ -15,7 +15,7 @@
          <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
          <label for="hostDest_id">Registro de conectividad a </label>
          <input list="ListaLogs" id="hostDest_id" name="hostDest_id" />
-         <datalist id="ListaLogs"></datalist>
+         <datalist id="ListaLogs" onchange="SelecLog()"></datalist>
       </header>                             <!-- Titulo del gráfico-->
       <img id="LogGraf" alt="Log del mes">  <!-- Cuerpo del gráfico -->
       <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
@@ -32,6 +32,9 @@
       function RecargaImg(){
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
          }
+      function SelecLog(){
+         
+      }
    </script>
    
 </html>
