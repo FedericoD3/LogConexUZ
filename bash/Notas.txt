@@ -64,3 +64,10 @@ https://imagemagick.org/image/wand.ico
 # En los minutos múltiplos de 10 se invoca el dibujo del bloque de esa fecha esa hora con el contenido del archivo
 #  y se borra el log temporal para que sea recreado
 
+# Después de cada edicion de un script, remarcarlo ejecutable:
+cd /Discos/Local/www/LogConex
+cd /Discos/Alfica/web-interna/LogConex
+sudo chmod -x bash/*
+sudo chmod +x bash/*.sh
+
+ ls -1 /Discos/Local/www/LogConex/local_logs/*.png  | sed  -e 's/\.png$//' 
