@@ -37,8 +37,9 @@
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
          }
       function SelecLog(){
+         Elegido=hostDest_id.options[hostDest_id.selectedIndex].value;
 //         LogGraf.setAttribute("data-LogGrafArch")=hostDest_id.value;
-         LogGraf.setAttribute("data-LogGrafArch")="entonces?";
+         LogGraf.setAttribute("data-LogGrafArch")=Elegido;
          console.log(LogGraf.getAttribute("data-LogGrafArch"));
       }
    </script>
