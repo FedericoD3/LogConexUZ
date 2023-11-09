@@ -19,12 +19,11 @@
       </header>                             <!-- Titulo del gráfico-->
       <img id="LogGraf" alt="Log del mes">  <!-- Cuerpo del gráfico -->
       <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
-      <div id="fec">-</div>
+      <footer id="fec">-</footer>
    </body>
 
    <script>
       function Init(){
-//         Lista=LeerTexto("local_logs/logs.txt");
          LlenarLista(document.getElementById('ListaLogs'),"local_logs/logs.txt");
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
          setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
@@ -33,7 +32,8 @@
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-SacosMalla.png");
          }
       function SelecLog(){
-         console.log(ListaLogs.innerHTML);
+         console.log(hostDest_id.value);
+
       }
    </script>
    
