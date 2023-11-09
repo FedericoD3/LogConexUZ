@@ -12,13 +12,8 @@
 
    <body onload="Init()">
       <header> 
-         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
          <label for="ListaLogs">Registro de conectividad a </label>
          <select id="ListaLogs" onchange="SelecLog()"></select>
-<!--     
-         <input list="ListaLogs" id="hostDest_id" name="hostDest_id" onchange="SelecLog()" />
-         <datalist id="ListaLogs"></datalist>
--->         
       </header>                             <!-- Titulo del gráfico-->
       <img id="LogGraf" alt="Log del mes" data-LogGrafArch="Imagen del log">  <!-- Cuerpo del gráfico -->
       <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
@@ -28,8 +23,9 @@
    <script>
       function Init(){
          LlenarLista(document.getElementById('ListaLogs'),"local_logs/logs.txt");
+         ListaLogs.value=3;
          let LogGrafArch=LogGraf.getAttribute("data-LogGrafArch");
-         console.log(LogGrafArch);
+
          CargaImg(document.getElementById('LogGraf'), "local_logs/202311_Elec-WifiExtr.png");
          setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
          }
@@ -38,10 +34,7 @@
          }
       function SelecLog(){
          Elegido=ListaLogs.options[ListaLogs.value].text;
-         console.log(Elegido);
-         LogGraf.setAttribute("data-LogGrafArch")=Elegido;
-//         LogGraf.setAttribute("data-LogGrafArch")=Elegido;
-//        console.log(LogGraf.getAttribute("data-LogGrafArch"));
+         LogGraf.setAttribute("data-LogGrafArch",Elegido);
       }
    </script>
    
