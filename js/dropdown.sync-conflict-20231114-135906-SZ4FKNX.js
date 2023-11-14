@@ -14,8 +14,8 @@ function LeerTexto(URL) {
 function LlenarLista(objLista, URL){
   let Lista = LeerTexto(URL);       //  Leer el contenido del archivo especificado
   var Items = Lista.split('\n');    //  Separar a un array cada linea del archivo
-//  Items.sort();
-//  Items.reverse();
+  Items.sort();
+  Items.reverse();
   for (let i = 0; i < Items.length; i++) {
 /* Usando select */
   const Item = document.createElement("option");
