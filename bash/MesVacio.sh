@@ -135,7 +135,7 @@ echo "$Yo /usr/local/bin/magick -script $Scr" >> $Deb
 Img="${Img%%.*}"
 # Agregar al principio de la lista de archivos el nombre del archivo de log grafico recien creado:
 #  ( sed: directo en el archivo en disco: 1 sustitucion de /inicio-de-linea/ por /nombre-del-archivo-nuevo+linea-nueva/ )
-sed -i '1s/^/"$(basename $Img)"\n/' $(dirname $Img)/logs.txt
+sed -i '1s/^/$(basename $Img)\n/' $(dirname $Img)/logs.txt
 
 # echo $(basename $Img) >> $(dirname $Img)/logs.txt          # Agregar el PNG recien creado a la Lista de PNG en este directorio
 
