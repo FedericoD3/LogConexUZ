@@ -139,6 +139,6 @@ echo "$Yo /usr/local/bin/magick -script $Scr" >> $Deb
 # echo $(basename $Img) >> $(dirname $Img)/logs.txt          # Agregar el PNG recien creado a la Lista de PNG en este directorio
 
 cd $(dirname $Img)                        # Cambiar al directorio de los logs gráficos
-ls -1r *.png > $(dirname $Img)/logs.txt   # Registrar los PNG existentes, uno por línea, en orden descendente
+ls -1tr *.png > $(dirname $Img)/logs.txt  # Registrar los PNG existentes, uno por línea, el mas reciente primero
 
 echo "" >> $Deb                                            # Separar del log de la siguiente ejecucion
