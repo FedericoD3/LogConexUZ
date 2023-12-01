@@ -138,7 +138,7 @@ echo "$Yo /usr/local/bin/magick -script $Scr" >> $Deb
 #sed -i '1s/^/$(basename $Img)\n/' $(dirname $Img)/logs.txt
 # echo $(basename $Img) >> $(dirname $Img)/logs.txt          # Agregar el PNG recien creado a la Lista de PNG en este directorio
 
-cd $(dirname $Img)                        # Cambiar al directorio de los logs gráficos
-ls -1tr *.png > $(dirname $Img)/logs.txt  # Registrar los PNG existentes, uno por línea, el mas reciente primero
+cd $(dirname $Img)                                           # Cambiar al directorio de los logs gráficos
+ls -1tr *.png | sed 's/.png//' > $(dirname $Img)/logs.txt    # Registrar los PNG existentes, uno por línea, el mas reciente primero
 
-echo "" >> $Deb                                            # Separar del log de la siguiente ejecucion
+echo "" >> $Deb                                              # Separar del log de la siguiente ejecucion
