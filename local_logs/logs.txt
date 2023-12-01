@@ -1,3 +1,4 @@
+"$(basename $Img)"
 202311_google.com
 202310_google.com
 202309_google.com
