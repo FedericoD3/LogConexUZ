@@ -45,3 +45,18 @@ Activar GitHub pages de este directorio en https://github.com/NOMBRE-USUARIO/NOM
   git push -u origin main
 
 # En el servidor: resactivar el script de publicación
+
+########## RESET DESDE BASH
+cd /Discos/Local/www/LogConex/bash/
+cd .. 
+# RESET:
+#   chmod 777 -R .git
+#   rm -R .git
+#   git init
+#   git config --global --add safe.directory $(pwd)  
+#   git remote add origin git@github.com:FedericoD3/LogConexVD.git
+#   git branch -M main 
+git add .
+git commit -m "Reset del $(TZ=":America/Caracas" date +'%Y-%m-%d_%H:%M')"
+git push -u -f origin main 
+###########################
