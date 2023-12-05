@@ -24,6 +24,7 @@ Activar GitHub pages de este directorio en https://github.com/NOMBRE-USUARIO/NOM
   git branch -M main 
   git remote add origin git@github.com:NOMBRE-USUARIO/NOMBRE-DEL-REPO.git
                         git@github.com:FedericoD3/LogConexVD.git
+                        git@github.com/FedericoD3/LogConexVDlan.git
                         git@github.com:FedericoD3/LogConexUZ.git
                         git@github.com:ALFICA-Sistemas/LogConex.git
 
