@@ -1,0 +1,14 @@
+cd /Discos/Alfica/web-interna/LogConex/
+cd /Discos/Local/www/LogConex/
+
+# RESET:
+#   chmod 777 -R .git
+#   rm -R .git
+#   git init
+#   git config --global --add safe.directory $(pwd)
+#   git remote add origin https://github.com/FedericoD3/LogConexVDlan.git
+#   git branch -M main 
+git add .
+git commit -m "Commit del $(TZ=":America/Caracas" date +'%Y-%m-%d_%H:%M')"
+git push -u -f origin main 
+

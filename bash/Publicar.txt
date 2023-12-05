@@ -22,17 +22,19 @@ Activar GitHub pages de este directorio en https://github.com/NOMBRE-USUARIO/NOM
   git add .
   git commit -m "Commit inicial"
   git branch -M main 
-  git remote add origin git@github.com:NOMBRE-USUARIO/NOMBRE-DEL-REPO.git
-                        git@github.com:FedericoD3/LogConexVD.git
-                        git@github.com/FedericoD3/LogConexVDlan.git
-                        git@github.com:FedericoD3/LogConexUZ.git
-                        git@github.com:ALFICA-Sistemas/LogConex.git
+  git remote add origin https://github.com/NOMBRE-USUARIO/NOMBRE-DEL-REPO.git
+                        https://github.com/FedericoD3/LogConexVD.git
+                        https://github.com/FedericoD3/LogConexVD.git
+                        https://github.com/FedericoD3/LogConexVDlan.git
+                        https://github.com/FedericoD3/LogConexUZ.git
+                        https://github.com/ALFICA-Sistemas/LogConex.git
 
 # NO SE POR QUE AHORA NECESITA ESTO PARA AUTENTICAR:
-#  ERA PORQUE ESTABA MEZCLANDO .GIT CON LA SINCRONIZACION DE SYNCTHING!
-  cd ~/.ssh
-  ssh-keygen
-  cat ~/.ssh/id_rsa.pub
+#  ERA PORQUE ESTABA CONECTANDO POR SSH (git@github.com:FedericoD3/...)
+#  Y NO HTTPS (https://github.com/FedericoD3/...)
+#   cd ~/.ssh
+#   ssh-keygen
+#   cat ~/.ssh/id_rsa.pub
 # Copiar el contenido de ese archivo, sin incluir el <usuario>@<host> del final
 # Y pegarlo en una clave nueva creada en https://github.com/settings/keys
 
