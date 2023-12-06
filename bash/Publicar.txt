@@ -32,6 +32,7 @@ Activar GitHub pages de este directorio en https://github.com/NOMBRE-USUARIO/NOM
 # NO SE POR QUE AHORA NECESITA ESTO PARA AUTENTICAR:
 #  ERA PORQUE ESTABA CONECTANDO POR SSH (git@github.com:FedericoD3/...)
 #  Y NO HTTPS (https://github.com/FedericoD3/...)
+#  PARA VER CUAL ESTÁ USANDO, EJECUTAR git remote -v
 #   cd ~/.ssh
 #   ssh-keygen
 #   cat ~/.ssh/id_rsa.pub
