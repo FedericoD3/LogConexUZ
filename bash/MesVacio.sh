@@ -1,4 +1,4 @@
-\#!/bin/bash
+#!/bin/bash
 
 # Incluir los parametros del grafico
 source $(dirname "$0")/ParamsLogConex.dat
