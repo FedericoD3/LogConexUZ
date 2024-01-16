@@ -2,8 +2,8 @@
 
 # Parametros comunes a los scripts de registro:
 
-  Mon=" -monitor "				  # Mostrar progreso
-# Mon=" "  	                # No mostrar progreso
+# Mon=" -monitor "          # Mostrar progreso
+  Mon=" "  	            # No mostrar progreso
 
 DirTmp="/tmp/LogConex"      # Directorio temporal auto-vaciado en boot
 
