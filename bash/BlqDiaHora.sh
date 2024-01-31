@@ -61,13 +61,15 @@ if [ ! -f $Img ]; then                                                  # Si el 
               $(dirname ${0})"/"MesVacio.sh $Img $Suf                   #  ejecotar el generador de imagen del mes vacio
 fi
 
+echo "($Yo) Respaldar $Img antes de procesarlo" >> $Deb
+
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
 echo "($Yo)   con el resultado $Res en la imagen $Img" >> $Deb
-echo "$Mon $Img " > $Scr 
+echo "$Mon $Img " > $Scr
 # Calcular los limites horizontales del bloque:
         X1=$(( $mIzq + $bIzq + ($Col-1) * ($ColAncho + $ColSep) +1 ))
 echo "($Yo) X1=$mIzq + $bIzq + ($Col-1) * ($ColAncho + $ColSep) +1 =$X1" >> $Deb
-        X2=$(( $X1 + $ColAncho - $ColSep )) 
+        X2=$(( $X1 + $ColAncho - $ColSep ))
 echo "($Yo) X2=$X1 + $ColAncho - $ColSep =$X2" >> $Deb
         Y=$(( $mSup + $bSup + $Fil * ( $FilAlto + $FilSep ) -$Min -2 ))         # Calcular la coordenada Y de la linea M en esta fila:
 echo "($Yo) Y=$mSup + $bSup + $Fil * ( $FilAlto + $FilSep ) -$Min -2 =$Y" >> $Deb
@@ -89,10 +91,11 @@ case $Res in                                                            # Decidi
   ;;&
   *)
     # No trazar nada
-esac  
+esac
 
 echo "$Mon -write $Img" >> $Scr                                         # Terminar el script escribiendo al archivo de imagen del mes
 echo "($Yo) /usr/local/bin/magick -script $Scr" >> $Deb
-      /usr/local/bin/magick -script $Scr                                # Ejecutar ImageMagic con el script generado 
+
+      /usr/local/bin/magick -script $Scr                                # Ejecutar ImageMagic con el script generado
 
 # echo "" >> $Deb                                                         # Separar del log de la siguiente ejecucion
