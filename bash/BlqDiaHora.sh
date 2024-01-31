@@ -62,6 +62,8 @@ if [ ! -f $Img ]; then                                                  # Si el 
 fi
 
 echo "($Yo) Respaldar $Img antes de procesarlo" >> $Deb
+echo "($Yo) cp $Img $DirTmp/$(basename $Img)" 
+            cp $Img $DirTmp/$(basename $Img)
 
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
 echo "($Yo)   con el resultado $Res en la imagen $Img" >> $Deb
