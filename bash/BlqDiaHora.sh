@@ -62,7 +62,7 @@ if [ ! -f $Img ]; then                                                  # Si el 
 fi
 
 echo "($Yo) Respaldar $Img antes de procesarlo" >> $Deb
-echo "($Yo) cp $Img $DirTmp/$(basename $Img)" 
+echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
             cp $Img $DirTmp/$(basename $Img)
 
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
@@ -97,7 +97,12 @@ esac
 
 echo "$Mon -write $Img" >> $Scr                                         # Terminar el script escribiendo al archivo de imagen del mes
 echo "($Yo) /usr/local/bin/magick -script $Scr" >> $Deb
+            /usr/local/bin/magick -script $Scr                          # Ejecutar ImageMagic con el script generado
 
-      /usr/local/bin/magick -script $Scr                                # Ejecutar ImageMagic con el script generado
+if [[ ! -s $Img ]] ; then
+  echo "($Yo) La imagen quedo vacia, se restauro el original" >> $Deb
+  echo "($Yo) cp $DirTmp/$(basename $Img) $Img" >> $Deb
+              cp $DirTmp/$(basename $Img) $Img
+fi
 
 # echo "" >> $Deb                                                         # Separar del log de la siguiente ejecucion
