@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+   <head>
+      <title>Registro de conexion</title>
+      <!-- https://www.w3schools.com/html/html_layout.asp -->
+      <link rel="shortcut icon" href="local_css/favicon.png" type="image/x-icon">
+      <link rel="stylesheet" type="text/css" href="css/comun.css">
+      <link rel="stylesheet" type="text/css" href="css/dropdown.css">
+      <link rel="stylesheet" type="text/css" href="local_css/local.css">
+      <script src="js/comun.js"></script>
+      <script src="js/dropdown.js"></script>             
+   </head>
+
+   <body onload="Init()">
+      <header> 
+         <label for="ListaLogs">Registro de conectividad a </label>
+         <select id="ListaLogs" onchange="SelecLog()"></select>
+      </header>                             <!-- Titulo del gráfico-->
+      <img id="LogGraf" alt="Log del mes" data-LogGrafArch="Imagen del log">  <!-- Cuerpo del gráfico -->
+      <footer id="subtit">-</footer>                                            <!-- Pie de gráfico -->
+      <footer id="fec">-</footer>
+   </body>
+
+   <script>
+      function Init(){
+         LlenarLista(document.getElementById('ListaLogs'),"local_logs/logs.txt");
+         ListaLogs.value=0;
+         SelecLog();
+         setInterval(RecargaImg, 30000);      // Recarga periodica de la imagen
+         }
+      
+      function SelecLog(){
+         LogGrafArch="local_logs/"+ListaLogs.options[ListaLogs.value].text+".png";
+         LogGraf.setAttribute("data-LogGrafArch",LogGrafArch);
+         console.log(LogGraf.getAttribute("data-LogGrafArch"));
+         RecargaImg();
+      }
+
+      function RecargaImg(){
+         CargaImg(document.getElementById('LogGraf'), LogGraf.getAttribute("data-LogGrafArch"));
+      }
+
+   </script>
+   
+</html>

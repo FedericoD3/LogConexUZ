@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Parametros comunes a los scripts de registro:
+
+# Mon=" -monitor "          # Mostrar progreso
+  Mon=" "  	            # No mostrar progreso
+
+DirTmp="/tmp/LogConex"      # Directorio temporal auto-vaciado en boot
+
+ColorNoc="#203070"          # Color de horas nocturnas no registradas
+ColorDia="#C0E0FF"          # Color de horas  diurnas  no registradas
+ColorSep="#909090"          # Color de separadores entre fechas
+ColorSepRes="#FFFF00"       # Color de separadores resaltados cada 5 dias / cada hora
+ColorOk="#00FF00"           # Color con conexion exitosa
+ColorNo="#FF0000"           # Color con conexion fallida
+ColorNR="none"              # Color no registrado
+CarOk="√"                   # Caracter indicativo de conexion existosa
+CarNo="×"                   # Caracter indicativo de conexión fallida
+CarNR="-"                   # Caracter indicativo de conexión no registrada
+FontNom="Victor-Mono-Bold"  # Tipografia para las etiquetas
+FontTam=10                  # Tamaño de las letras de las etiquetas
+
+Cols=144
+mIzq=15
+bIzq=1
+ColAncho=4
+ColSep=1
+bDer=1
+
+Fils=31
+mSup=10
+bSup=1
+FilAlto=10
+FilSep=1
+bInf=1

@@ -1,0 +1,73 @@
+Los bloques tienen Z pixeles en verde y 10-Z en rojo,
+ donde Z es 10x porcentaje de conexión
+
+ALTURA DEL GRAFICO
+Cada mes tiene 31 filas, una por dia
+Cada fila tiene 10 pixeles de altura (0 a 100%)
+Entre cada 5 filas hay separación de 1 pixel
+Arriba hay 10 pixeles para encabezados
+  Encabezado    1 * 10 pix
++ Filas:       31 * 10 pix
++ Borde Sup     1 *  1 pix
++ Sep c/1 dia: 30 *  1 pix
++ Borde Inf:    1 *  1 pix
+  Total:      352 pixeles 
+
+ANCHO DEL GRAFICO
+Cada dia tiene 24 horas
+Cada hora tiene 6 bloques de 10 minutos c/u: 144 bloques
+Cada bloque tendrá 4 pixeles de ancho
+Entre cada bloque hay separación de 1 pixel 
+A la izq hay 15 pixeles para fechas
+  Fechas:      1 * 15 pix
++ Borde izq:   1 *  1 pix
++ Columnas:  144 *  4 pix
++ Sep c/blq  143 *  1 pix
++ Borde der:   1 *  1 pix
+  Total:     736 pixeles
+
+https://www.color-name.com/
+El fondo no registrado de noche entre 00:00 y 06:00 y entre 18:00 y 23:59 es azul oscuro #203048
+El fondo no registrado de dia entre 06:00 y 18:00 es azul celeste #97D3EA o amarillo pálido #FFFACD
+
+Cuadrícula de lineas amarillo puro #FFFF00 separando cada hora y cada 5 días: me ahorro un pixel de resaltado
+
+https://imagemagick.org/Usage/
+https://www.fmwconcepts.com/imagemagick/index.php
+
+  BaseLogs=/Resto/web/logs
+  LogVacio=$BaseLogs/Vacio.gif
+# Lienzo vacío transparente (inc margenes y bordes):
+  magick -size 880x341 xc:none $LogVacio
+
+# Agregar una linea de prueba:
+# magick $LogVacio -stroke xc:#000060 -draw 'line 50,20 800,300' $LogVacio
+# Agregar rectángulo de prueba (el "stroke" parece ser por fuera del rectángulo):
+# magick $LogVacio -fill white -stroke red -draw "rectangle 16,11 20,20" $LogVacio
+
+# Rectángulo color noche:
+  magick $LogVacio -fill xc:#041A40 -draw "rectangle 16,11 862,345" $LogVacio
+# Rectángulo color dia:
+  magick $LogVacio -fill xc:#97D3EA -draw "rectangle 300,11 600,345" $LogVacio
+
+# Agregar lineas horizontales cada 5 dias
+#  y lineas verticales cada hora (6 bloques):
+magick $LogVacio -stroke yellow -draw 'line x1,y1 x2,y2' $LogVacio
+
+https://imagemagick.org/image/wand.ico
+
+# El registro de los últimos 10 minutos se mantiene 
+#  en un archivo temporal de 10 caracteres # ping exitoso, O ping fallido y - ping no jecutado
+#  ubicado en /temp y llamado ELEC.log, WAN1.log, etc
+# En cada minuto se hace ping y se sustituye el caracter correspondiente en el log
+# Si el log no existe, se crea con diez noreg: ----------
+# En los minutos múltiplos de 10 se invoca el dibujo del bloque de esa fecha esa hora con el contenido del archivo
+#  y se borra el log temporal para que sea recreado
+
+# Después de cada edicion de un script, remarcarlo ejecutable:
+cd /Discos/Local/www/LogConex
+cd /Discos/Alfica/web-interna/LogConex
+sudo chmod -x bash/*
+sudo chmod +x bash/*.sh
+
+ ls -1 /Discos/Local/www/LogConex/local_logs/*.png  | sed  -e 's/\.png$//' 

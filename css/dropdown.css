@@ -1,0 +1,15 @@
+
+/* 
+ListaLogs {
+  border: 0 none;
+  display: none;
+  font-size: 10px;
+}
+*/
+
+ListaLogs {
+  font-size: 0.8em; 
+  padding: 0.3em 1em; 
+  background-color: #Fcc; 
+  cursor: pointer; 
+}
