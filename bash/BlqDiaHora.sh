@@ -61,9 +61,11 @@ if [ ! -f $Img ]; then                                                  # Si el 
               $(dirname ${0})"/"MesVacio.sh $Img $Suf                   #  ejecotar el generador de imagen del mes vacio
 fi
 
-echo "($Yo) Respaldar $Img antes de procesarlo" >> $Deb
-echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
-            cp $Img $DirTmp/$(basename $Img)
+if [[ -s $Img ]] ; then
+  echo "($Yo) Respaldar $Img antes de procesarlo, si no esta vacio!" >> $Deb
+  echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
+              cp $Img $DirTmp/$(basename $Img)
+fi
 
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
 echo "($Yo)   con el resultado $Res en la imagen $Img" >> $Deb
