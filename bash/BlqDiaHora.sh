@@ -61,12 +61,6 @@ if [ ! -f $Img ]; then                                                  # Si el 
               $(dirname ${0})"/"MesVacio.sh $Img $Suf                   #  ejecotar el generador de imagen del mes vacio
 fi
 
-if [[ -s $Img ]] ; then
-  echo "($Yo) Respaldar $Img antes de procesarlo, si no esta vacio!" >> $Deb
-  echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
-              cp $Img $DirTmp/$(basename $Img)
-fi
-
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
 echo "($Yo)   con el resultado $Res en la imagen $Img" >> $Deb
 echo "$Mon $Img " > $Scr
@@ -97,11 +91,20 @@ case $Res in                                                            # Decidi
     # No trazar nada
 esac
 
+# Si la imagen actual NO ESTA vacia, respaldarla antes de procesarla
+if [ $(stat -c %s "${Img}") -gt 0 ]; then
+  echo "($Yo) Respaldar $Img antes de procesarlo, si no esta vacio!" >> $Deb
+  echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
+              cp $Img $DirTmp/$(basename $Img)
+fi
+
 echo "$Mon -write $Img" >> $Scr                                         # Terminar el script escribiendo al archivo de imagen del mes
 echo "($Yo) /usr/local/bin/magick -script $Scr" >> $Deb
             /usr/local/bin/magick -script $Scr                          # Ejecutar ImageMagic con el script generado
 
-if [[ ! -s $Img ]] ; then
+# Si la imagen quedo vacia, restaurar el respaldo
+if [ $(stat -c %s "${Img}") -eq 0 ]; then
+  echo "($Yo) La imagen quedo vacia, se restauro el original el $(TZ=":America/Caracas" date +'%Y-%m-%d_%H%M%S')" >> $DirTmp/$(basename $Img).err_$(TZ=":America/Caracas" date +'%Y-%m')
   echo "($Yo) La imagen quedo vacia, se restauro el original" >> $Deb
   echo "($Yo) cp $DirTmp/$(basename $Img) $Img" >> $Deb
               cp $DirTmp/$(basename $Img) $Img
