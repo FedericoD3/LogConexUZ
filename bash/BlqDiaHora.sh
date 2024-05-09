@@ -92,11 +92,11 @@ case $Res in                                                            # Decidi
 esac
 
 # Si la imagen actual NO ESTA vacia, respaldarla antes de procesarla
-if [ $(stat -c %s "${Img}") -gt 0 ]; then
+# if [ $(stat -c %s "${Img}") -gt 0 ]; then
   echo "($Yo) Respaldar $Img antes de procesarlo, si no esta vacio!" >> $Deb
   echo "($Yo) cp $Img $DirTmp/$(basename $Img)" >> $Deb
               cp $Img $DirTmp/$(basename $Img)
-fi
+# fi
 
 echo "$Mon -write $Img" >> $Scr                                         # Terminar el script escribiendo al archivo de imagen del mes
 echo "($Yo) /usr/local/bin/magick -script $Scr" >> $Deb
