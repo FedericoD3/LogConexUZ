@@ -29,18 +29,19 @@ Col=$2                                                                  # Pasar 
   Col=$(echo $Col | sed 's/^0*//')                                      # ELiminar el cero precedente para que no lo confunda confunda con octal y explote en "08"
 Min=$3                                                                  # Pasar el argumento a una variable leible
   if [ -z "$Min" ]; then Min=1; fi                                      # Si no se recibió valor o es vacío, asignar el default
-  if [ $Min -lt 0 ]; then Min=0; fi                                     # Si el valor es menos que el minimo, asignar el minimo
+  if [ $Min -lt 0 ]; then Min=1; fi                                     # Si el valor es menos que el minimo, asignar el minimo
   if [ $Min -gt 9 ]; then Min=9; fi                                     # Si el valor es mayor que el maximo, asignar el maximo
 Img=$4                                                                  # Pasar el argumento a una variable leible
   if [ -z $Img ]; then                                                  # Si el path/imagen tiene longitud cero,
     Img=$(dirname ${0})                                                 # Iniciarla con el path de este script,
-#   Img=$Img"/"$(TZ=":America/Caracas" date +'%Y%m')".png"              #  y agregar por defecto AñoMes.png
+    Img=$Img"/"$(TZ=":America/Caracas" date +'%Y%m')".png"              #  y agregar por defecto AñoMes.png
   fi
 Res=$5                                                                  # Pasar el argumento a una variable leible
     if [ -z $Res ]; then                                                # Si el Reso del bloque tiene longitud cero,
     Res="$CarNo"                                                        #  asimir falla
   fi
 Suf=$6
+
 
 # Definir los logs temporales:
 Yo=$(basename ${0})                                                     # Tomar el nombre de este script
@@ -54,11 +55,10 @@ echo "($Yo) $Fil $Col $Min $Img $Res" >> $Deb                           # Regist
 echo "($Yo) DEB: $Deb SCR:$Scr" >> $Deb                                 # Registrar los temporales
 
 # Asegurar la existencia de la imagen sobre la cual se dibujara el bloque
-#if [ ! -f $Img ]; then                                                  # Si el archivo NO existe,
-if [ ! -f $Img.$(date +%Y%m) ]; then                                     # Si NO existe el archivo indicador de este log de este mes,
+if [ ! -f $Img ]; then                                                  # Si el archivo NO existe,
+  echo "($Yo) No existe $Img, crearlo" >> $Deb
   echo "($Yo) $(dirname ${0})"/"MesVacio.sh $Img $Suf"  >> $Deb
-              $(dirname ${0})"/"MesVacio.sh $Img $Suf                    #  ejecutar el generador de imagen del mes vacio
-  touch $Img.$(date +%Y%m)                                               #  y crear el archivo indicador de este log de este mes
+              $(dirname ${0})"/"MesVacio.sh $Img $Suf                   #  ejecotar el generador de imagen del mes vacio
 fi
 
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
