@@ -58,7 +58,8 @@ echo "($Yo) DEB: $Deb SCR:$Scr" >> $Deb                                 # Regist
 if [ ! -f $Img.$(date +%Y%m) ]; then                                     # Si NO existe el archivo indicador de este log de este mes,
   echo "($Yo) $(dirname ${0})"/"MesVacio.sh $Img $Suf"  >> $Deb
               $(dirname ${0})"/"MesVacio.sh $Img $Suf                    #  ejecutar el generador de imagen del mes vacio
-  touch $Img.$(date +%Y%m)                                               #  y crear el archivo indicador de este log de este mes
+  rm $Img.*                                                              #  eliminar el archivo indicador de existencia del log del mes pasado
+  touch $Img.$(date +%Y%m)                                               #  y crear  el archivo indicador de existencia del log del actual
 fi
 
 echo "($Yo) Agregar el minuto $Min del bloque en la columna $Col y fila $Fil" >> $Deb
