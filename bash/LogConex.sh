@@ -63,7 +63,12 @@ then
   echo -n "$Yo Intentando ping a $Dest. Exit code: $Resp"  | tee -a $Deb
 else
   # Si no es URL interno, es URL (susceptible de ser diferenciable en firewall):
-  curl -I --output /dev/null -s $Dest --connect-timeout 1 --max-time 15 > nul
+  #  Traer solo encabezado HTTP y no el documento entero, 
+  #  Descartar lo recibido
+  #  No emitir progreso
+  #  Limitar a 1 seg la espera por conexion
+  #  Limitar a 5 seg la espera por transmision
+  curl --head --output /dev/null --silent --connect-timeout 1 --max-time 5 $Dest > nul
   Resp=$?
   echo -n "$Yo Intentando curl a $Dest. Exit code: $Resp"  | tee -a $Deb
 fi
