@@ -70,7 +70,7 @@ else
 fi
 
 if [ $Resp -eq "200" ]; then                                # Si el destinatario respondio.
-if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
+# if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
   Resul=$CarOk                                              #  usar el caracter definido en CarOk
   else                                                      # En caso contrario,
   Resul=$CarNo                                              #  usar el caracter definido en CarNo
