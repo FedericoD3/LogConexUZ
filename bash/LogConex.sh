@@ -59,16 +59,19 @@ if  [[ ! $Dest =~ ^http.*$ ]];
 then
   # Si no tiene HTTP, usar ping (mas ligero pero no diferenciable por URL en firewall):
   ping -W 1 -c 1 $Dest > Nul
+  Cod=200   # Resultado HTTP artificial
   Resp=$?
   if [ $Resp -eq "0" ]; then Resp=200; fi        # Sustituir Error code 0 por HTTP result 200 para que sea igual a curl
   echo -n "$Yo Intentando ping a $Dest. Exit code: $Resp"  | tee -a $Deb
 else
-  curl --output /dev/null --silent --connect-timeout 7 --max-time 9 $Dest
+  # Si tiene http, intentar conexion l URL
+  Cod=$(curl --output /dev/null --silent --connect-timeout 7 --max-time 9 $Dest --write-out "%{http_code}")
   Resp=$?
   echo -n "$Yo Intentando curl a $Dest. Exit code: $Resp"  | tee -a $Deb
 fi
 
-if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
+#if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
+if [[ $Resp -eq "0" && $Cod -lt 210 ]]; then                # Si el desninatario respondio sin redireccion,
   Resul=$CarOk                                              #  usar el caracter definido en CarOk
   else                                                      # En caso contrario,
   Resul=$CarNo                                              #  usar el caracter definido en CarNo
