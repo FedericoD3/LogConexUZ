@@ -71,7 +71,7 @@ else
 fi
 
 #if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
-if [[ $Resp -eq "0" && $Cod -lt 210 ]]; then                # Si el desninatario respondio sin redireccion,
+if [[ $Resp -eq "0" && $Cod -lt 305 ]]; then                # Si el desninatario respondio (filtrando redireccion 307 al router Digitel sin linea),
   Resul=$CarOk                                              #  usar el caracter definido en CarOk
   else                                                      # En caso contrario,
   Resul=$CarNo                                              #  usar el caracter definido en CarNo

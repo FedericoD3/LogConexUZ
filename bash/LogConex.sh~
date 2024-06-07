@@ -67,7 +67,7 @@ else
   # Si tiene http, intentar conexion l URL
   Cod=$(curl --output /dev/null --silent --connect-timeout 7 --max-time 9 $Dest --write-out "%{http_code}")
   Resp=$?
-  echo -n "$Yo Intentando curl a $Dest. Exit code: $Resp"  | tee -a $Deb
+  echo -n "$Yo Intentando curl a $Dest. Bash:$Resp HTTP:$Cod"  | tee -a $Deb
 fi
 
 #if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
