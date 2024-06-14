@@ -58,16 +58,15 @@ echo "$Yo DEB: $Deb" | tee -a $Deb                                # Registrar lo
 if  [[ ! $Dest =~ ^http.*$ ]];
 then
   # Si no tiene HTTP, usar ping (mas ligero pero no diferenciable por URL en firewall):
-  ping -W 1 -c 1 $Dest > Nul
-  Cod=200   # Resultado HTTP artificial
-  Resp=$?
-  if [ $Resp -eq "0" ]; then Resp=200; fi        # Sustituir Error code 0 por HTTP result 200 para que sea igual a curl
   echo -n "$Yo Intentando ping a $Dest. Exit code: $Resp"  | tee -a $Deb
+  ping -W 1 -c 1 $Dest > Nul
+  Resp=$?
+  if [ $Resp -eq "0" ]; then Cod=200; fi         # Forzar HTTP result 200 si el ping fue exitoso, para manejar igual al caso curl
 else
   # Si tiene http, intentar conexion l URL
+  echo -n "$Yo Intentando curl a $Dest. Bash:$Resp HTTP:$Cod"  | tee -a $Deb
   Cod=$(curl --output /dev/null --silent --connect-timeout 7 --max-time 9 $Dest --write-out "%{http_code}")
   Resp=$?
-  echo -n "$Yo Intentando curl a $Dest. Bash:$Resp HTTP:$Cod"  | tee -a $Deb
 fi
 
 #if [ $Resp -eq "0" ]; then                                  # Si el destinatario respondio.
